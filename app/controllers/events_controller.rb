@@ -5,8 +5,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @user = current_user
     @event = Event.new(event_params)
+    @event.user = current_user
         # @dose.cocktail = @cocktail
     if @event.save
       redirect_to event_path(@event)
@@ -15,19 +15,24 @@ class EventsController < ApplicationController
     end
   end
 
+  # def edit
+  #   @event = Event.find params[:id]
+  #   @event.save
+  # end
+
+  # def update
+
+  # end
+
   def destroy
     @event = Event.find params[:id]
     @event.destroy
     redirect_to user_path(@event.user)
   end
 
-  def edit
-    @event = Event.find params[:id]
-  end
-
   private
 
   def event_params
-    params.require(:event).permit(:match, :date, :description, :address, :capacity, :fee)
+    params.require(:event).permit(:game, :date, :description, :address, :capacity, :fee, :photo)
   end
 end
