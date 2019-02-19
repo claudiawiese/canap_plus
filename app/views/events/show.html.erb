@@ -1,1 +1,26 @@
-show.html.erb
+<h1>Details of selected event</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset3">
+      <h2><%=@event.game %></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset3">
+      <p><%= @event.date %></p>
+      <p><%= @event.address %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset3">
+      <p><%= @event.description %></p>
+      <p><%= @event.capacity %></p>
+      <p><%= @event.fee %></p>
+    </div>
+  </div>
+</div>
+
+
+
+
