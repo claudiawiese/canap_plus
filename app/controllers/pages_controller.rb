@@ -3,4 +3,5 @@ class PagesController < ApplicationController
   def home
     @events = Event.last(10)
   end
+
 end
