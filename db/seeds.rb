@@ -71,7 +71,7 @@ user5 = User.create!(
   )
 
 event1 = Event.create!(
-  match: Faker::Internet.username(8),
+  game: "#{Faker::Football.team} - #{Faker::Football.team}",
   date: Faker::Date.forward(23),
   description: Faker::Lorem.paragraph,
   address: Faker::Address.street_address,
@@ -81,7 +81,7 @@ event1 = Event.create!(
   )
 
 event2 = Event.create!(
-  match: Faker::Internet.username(8),
+  game: "#{Faker::Football.team} - #{Faker::Football.team}",
   date: Faker::Date.forward(23),
   description: Faker::Lorem.paragraph,
   address: Faker::Address.street_address,
@@ -91,7 +91,7 @@ event2 = Event.create!(
   )
 
 event3 = Event.create!(
-  match: Faker::Internet.username(8),
+  game: "#{Faker::Football.team} - #{Faker::Football.team}",
   date: Faker::Date.forward(23),
   description: Faker::Lorem.paragraph,
   address: Faker::Address.street_address,
