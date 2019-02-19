@@ -23,11 +23,12 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find params[:id]
+    @event.save
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:match, :date, :description, :address, :capacity, :fee)
+    params.require(:event).permit(:game, :date, :description, :address, :capacity, :fee, :photo)
   end
 end
