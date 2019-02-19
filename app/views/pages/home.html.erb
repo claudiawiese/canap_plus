@@ -9,9 +9,9 @@
 </form>
 
 
-<%@events.each do |event|%>
+
 <ul>
+    <%@events.each do |event|%>
     <li> <%= link_to "#{event.game} - #{event.date}", events_path %></li>
-    </li>
   <% end %>
 </ul>

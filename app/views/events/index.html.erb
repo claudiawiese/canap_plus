@@ -1,7 +1,8 @@
 <h1>Events list </h1>
-<%@events.each do |event|%>
+
 <ul>
-  <li><%= event.game %> <%= event.date%></li>
+  <%@events.each do |event|%>
+  <li> <%= link_to "#{event.game} - #{event.date}", event_path(event) %> </li>
   <% end %>
 </ul>
 
