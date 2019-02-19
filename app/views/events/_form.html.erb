@@ -1,7 +1,11 @@
 <%= simple_form_for(@event) do |f| %>
 
-  <%= f.input :name %>
-
+  <%= f.input :game %>
+  <%= f.input :description %>
+  <%= f.input :date %>
+  <%= f.input :address %>
+  <%= f.input :capacity %>
+  <%= f.input :fee %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
 
