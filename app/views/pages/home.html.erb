@@ -1,8 +1,9 @@
-<h1>CANAP_PLUS</h1>
-
+<div>
+  <h1>CANAP_PLUS</h1>
+</div>
 
 <% @events.each do |event|%>
 <ul>
-  <li><%=event.match%> <%= event.date%></li>
+  <li><%=event.game%> <%= event.date%></li>
   <% end %>
 </ul>
