@@ -1,5 +1,9 @@
 class EventsController < ApplicationController
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def new
     @event = Event.new
   end
@@ -14,14 +18,19 @@ class EventsController < ApplicationController
     end
   end
 
+  # def edit
+  #   @event = Event.find params[:id]
+  #   @event.save
+  # end
+
+  # def update
+
+  # end
+
   def destroy
     @event = Event.find params[:id]
     @event.destroy
     redirect_to user_path(@event.user)
-  end
-
-  def edit
-    @event = Event.find params[:id]
   end
 
   private
