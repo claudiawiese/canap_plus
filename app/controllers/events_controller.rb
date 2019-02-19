@@ -11,7 +11,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-        # @dose.cocktail = @cocktail
     if @event.save
       redirect_to event_path(@event)
     else
@@ -37,6 +36,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:game, :date, :description, :address, :capacity, :fee)
+    params.require(:event).permit(:game, :date, :description, :address, :capacity, :fee, :photo)
   end
 end
