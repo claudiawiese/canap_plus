@@ -11,17 +11,29 @@
 
 <%= link_to "Les prochains matchs", events_index_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
 
+<% if user_signed_in? %>
+
+
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+      <%= cl_image_tag(current_user.avatar,
+      width: 25, height: 25, crop: :thumb, radius: :max, gravity: :face,:class => "avatar dropdown-toggle", :id => "navbar-wagon-menu", 'data-toggle' => "dropdown"  ) %>
+
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
 
           <li><%= link_to "Mon profil", edit_user_registration_path  %></li>
-          <li><a href="#">Se déconnecter</a></li>
+
+          <li><%= link_to "Se déconnecter", destroy_user_session_path  %></li>
         </ul>
       </div>
+      <% elsif %>
+
+<%= link_to "Connection", user_session_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
+
+<%= link_to "S'inscrire", new_user_registration_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
+<% end %>
     </div>
   </div>
 
@@ -31,11 +43,13 @@
       <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
-<li><%= link_to "Accueillir un match", new_event_path %></li>
+<li><%= link_to "Connection", new_event_path %></li>
 
-<li><%= link_to "Les prochains matchs", events_index_path %></li>
+<li><%= link_to "Inscription", events_index_path %></li>
 
       </ul>
     </div>
+
+
   </div>
 </div>
