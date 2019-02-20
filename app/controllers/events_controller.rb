@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-   skip_before_action :authenticate_user!, only: :index
+   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @events = Event.where.not(latitude: nil, longitude: nil)
     @markers = @events.map do |flat|
