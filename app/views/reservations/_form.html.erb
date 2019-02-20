@@ -1,0 +1,12 @@
+<%= simple_form_for(@reservation) do |f| %>
+
+  <%= f.input :@reservation.event %>
+
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+
+  <%= f.input :quantity %>
+
+  <%= f.button :submit, "Book event" %>
+<% end %>
+
