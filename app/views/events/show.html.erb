@@ -1,30 +1,20 @@
-<h1>Details of selected event</h1>
-
-
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <h2><%=@event.game %></h2>
+    <div class="col-xs-12 col-sm-6">
+      <%= cl_image_tag(@event.photo,
+      width: 400, height: 300, crop: :fill) %>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-xs-12 col-sm-6">
+      <h2><%=@event.game %></h2>
       <p><%= @event.date %></p>
       <p><%= @event.address %></p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
       <p><%= @event.description %></p>
-      <p><%= @event.capacity %></p>
-      <p><%= @event.fee %></p>
+      <p>Capacity: <%= @event.capacity %> persons</p>
+      <p>Price: <%= @event.fee %>€</p>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
 
     </div>
-  </div>
+    </div>
 </div>
 
 
