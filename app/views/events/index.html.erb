@@ -2,7 +2,14 @@
 
 <ul>
   <%@events.each do |event|%>
-  <li> <%= link_to "#{event.game} - #{event.date}", event_path(event) %> </li>
+  <li> <%= link_to "#{event.game} - #{event.date} - #{event.address}", event_path(event) %> </li>
   <% end %>
 </ul>
 
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
