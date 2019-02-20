@@ -37,3 +37,5 @@ gem 'devise'
 gem 'simple_form'
 
 gem 'faker'
+
+gem "geocoder"
