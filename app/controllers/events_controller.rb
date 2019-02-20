@@ -7,6 +7,11 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+
+    @available_seats = @event.capacity - @event.reservations.reduce(0) { |sum, res|
+      sum + res.quantity
+    }
+
   end
 
   def new

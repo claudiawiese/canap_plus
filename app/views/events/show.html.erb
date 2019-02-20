@@ -1,39 +1,22 @@
-<h1>Details of selected event</h1>
-
-<<<<<<< HEAD
-=======
-
->>>>>>> master
+<h1>Evenement sélectionné</h1>
 <div class="container">
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
-      <h2><%=@event.game %></h2>
+    <h2><%=@event.game%> </h2>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
-      <p><%= @event.date %></p>
-      <p><%= @event.address %></p>
+    <h2><%=@event.address%></h2>
+    <h2><%=@event.date%> </h2>
+    <h2><%=@event.description%> </h2>
+    <h2>Il reste <span class="badge"><%= @available_seats %></span> places dispos</h2>
+    <h2><%=@event.fee%> </h2>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
-      <p><%= @event.description %></p>
-      <p><%= @event.capacity %></p>
-      <p><%= @event.fee %></p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-<<<<<<< HEAD
-    <button type="submit" class="btn btn-primary">Make reservation</button>
-=======
-
->>>>>>> master
+    <%= link_to "Réserver", new_event_reservation_path(@event) %>
     </div>
   </div>
 </div>
-
-
-
-
