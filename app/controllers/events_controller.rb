@@ -4,12 +4,12 @@ class EventsController < ApplicationController
   def index
     @events = Event.where.not(latitude: nil, longitude: nil)
     if params[:game]
-      @events = @events.where("game ILIKE ?", "%#{params[:game]}%")
+      @events = Event.where("game ILIKE ?", "%#{params[:game]}%")
     end
-    @markers = @events.map do |flat|
+    @markers = @events.map do |event|
       {
-        lng: flat.longitude,
-        lat: flat.latitude
+        lng: event.longitude,
+        lat: event.latitude
       }
     end
   end
