@@ -1,22 +1,27 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
+    <h2><%=@event.game%> </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
       <%= cl_image_tag(@event.photo,
       width: 400, height: 300, crop: :fill) %>
     </div>
+  </div>
+  <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <h2><%=@event.game %></h2>
-      <p><%= @event.date %></p>
-      <p><%= @event.address %></p>
-      <p><%= @event.description %></p>
-      <p>Capacity: <%= @event.capacity %> persons</p>
-      <p>Price: <%= @event.fee %>€</p>
+    <h2><%=@event.address%></h2>
+    <h2><%=@event.date%> </h2>
+    <h2><%=@event.description%> </h2>
+    <h2>Il reste <%= @available_seats %> places dispos</h2>
+    <h2>Price: <%=@event.fee%> </h2>
     </div>
-
+  </div>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+    <%= link_to "Réserver", new_event_reservation_path(@event) %>
     </div>
-    </div>
+  </div>
 </div>
-
-
-
-
