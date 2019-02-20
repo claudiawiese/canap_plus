@@ -1,2 +1,17 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div>
+  <h1>CANAP_PLUS</h1>
+</div>
+
+
+<form action="/events" method="get">
+  <input type="text" name="game">
+  <input type="submit">
+</form>
+
+
+
+<ul>
+    <%@events.each do |event|%>
+    <li> <%= link_to "#{event.game} - #{event.date}", events_path %></li>
+  <% end %>
+</ul>
