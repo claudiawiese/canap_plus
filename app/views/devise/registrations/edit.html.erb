@@ -18,8 +18,7 @@
                   required: false %>
       <%= f.input :nickname,
                   required: false %>
-      <%= f.input :birthday,
-                  required: false %>
+      <%= f.input :birthday, as: :date, html5: true %>
       <%= f.input :phone,
                   required: false %>
       <%= f.input :avatar,
