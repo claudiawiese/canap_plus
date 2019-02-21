@@ -7,9 +7,11 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-<%= link_to "Accueillir un match", new_event_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
 
-<%= link_to "Les prochains matchs", events_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
+<%= link_to "Explorer", events_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
+<%= link_to "Accueillir un match", new_event_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
+<%= link_to "Mes matchs", dashboard_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
+
 
 <% if user_signed_in? %>
 
@@ -23,9 +25,7 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
 
-          <li><%= link_to "Mon profil", profil_path  %></li>
-          <li><%= link_to "Historique", dashboard_path  %></li>
-
+          <li><%= link_to "Modifier mon profil", edit_user_registration_path  %></li>
           <li><%= link_to "Se déconnecter", destroy_user_session_path  %></li>
         </ul>
       </div>
