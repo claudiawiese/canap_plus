@@ -1,10 +1,16 @@
 class EventsController < ApplicationController
-
    skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @events = Event.where.not(latitude: nil, longitude: nil)
-    if params[:game]
-      @events = Event.where("game ILIKE ?", "%#{params[:game]}%")
+
+    if params[:game].present?
+      @events = @events.search_by_game_or_adress(params[:game])
+      if params[:address].present?
+        @events = @events.search_by_game_or_adress(params[:address])
+      end
+    elsif params[:address].present?
+      @events = @events.search_by_game_or_adress(params[:address])
     end
     @markers = @events.map do |event|
       {
@@ -20,7 +26,6 @@ class EventsController < ApplicationController
     @available_seats = @event.capacity - @event.reservations.reduce(0) { |sum, res|
       sum + res.quantity
     }
-
   end
 
   def new
