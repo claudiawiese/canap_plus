@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'events/index'
   devise_for :users
   root to: 'pages#home'
+
+  get '/dashboard', to: 'profils#dashboard'
+  get '/profil', to: 'profils#show'
 
   resources :events, only: [:index, :show, :new, :create, :destroy] do
     resources :reservations, only: [:new, :create]

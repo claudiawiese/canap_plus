@@ -1,0 +1,26 @@
+<div class="container">
+<h1>Historique</h1>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <h2>Mes évènements</h2>
+    <ul>
+      <% @events.each do |event| %>
+      <li><%= link_to event.game, event_path(event.id) %></li>
+      <% end %>
+    </ul>
+
+  </div>
+  <div class="col-xs-12 col-sm-6">
+<h2>Mes réservations</h2>
+<ul>
+  <% @reservations.each do |reservation| %>
+    <li><%= link_to reservation.event.game, event_path(reservation.event.id) %> (<%= reservation.event.user.nickname%>)</li>
+  <% end %>
+
+</ul>
+
+  </div>
+</div>
+</div>
+

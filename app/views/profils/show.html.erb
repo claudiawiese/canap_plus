@@ -1,0 +1,30 @@
+<div class="container">
+<div class="row">
+  <div class="col-xs-6 col-sm-8">
+<h1><%= current_user.nickname %></h1>
+<%= cl_image_tag(current_user.avatar,
+      width: 300, height: 200, crop: :thumb) %>
+<ul>
+  <li><%= current_user.first_name %></li>
+  <li><%= current_user.last_name %></li>
+  <li><%= current_user.nickname %></li>
+  <li><%= current_user.phone %></li>
+  <li><%= current_user.team %></li>
+  <li><%= current_user.bio %></li>
+  <li><%= current_user.nickname %></li>
+  <li><%= current_user.birthday %></li>
+</ul>
+</div>
+
+
+<div class="col-xs-6 col-sm-4">
+  <h2>Accès rapide</h2>
+  <ul>
+    <li><%= link_to "Historique", dashboard_path  %>
+<li><%= link_to "Modifier mon profil", edit_user_registration_path  %></li>
+<li><%= link_to "Modifier mon mot de passe", edit_user_password_path  %></li>
+</ul>
+</div>
+
+</div>
+</div>
