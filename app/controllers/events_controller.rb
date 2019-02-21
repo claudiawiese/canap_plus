@@ -3,10 +3,14 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.where.not(latitude: nil, longitude: nil)
-    if params[:query].present?
-      @events = Event.search_by_game(params[:query])
-    else
-      @events = Event.all
+
+    if params[:game].present?
+      @events = @events.search_by_game_or_adress(params[:game])
+      if params[:address].present?
+        @events = @events.search_by_game_or_adress(params[:address])
+      end
+    elsif params[:address].present?
+      @events = @events.search_by_game_or_adress(params[:address])
     end
     @markers = @events.map do |event|
       {
@@ -22,7 +26,6 @@ class EventsController < ApplicationController
     @available_seats = @event.capacity - @event.reservations.reduce(0) { |sum, res|
       sum + res.quantity
     }
-
   end
 
   def new

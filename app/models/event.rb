@@ -6,8 +6,8 @@ class Event < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   include PgSearch
-  pg_search_scope :search_by_game,
-    against: [:game],
+  pg_search_scope :search_by_game_or_adress,
+    against: [:game, :address],
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
