@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
-
    skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @events = Event.where.not(latitude: nil, longitude: nil)
-    if params[:game]
-      @events = Event.where("game ILIKE ?", "%#{params[:game]}%")
+    if params[:query].present?
+      @events = Event.search_by_game(params[:query])
+    else
+      @events = Event.all
     end
     @markers = @events.map do |event|
       {

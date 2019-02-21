@@ -3,10 +3,18 @@
 </div>
 
 
-<form action="/events" method="get">
+<!-- <form action="/events" method="get">
   <input type="text" name="game">
   <input type="submit">
-</form>
+</form> -->
+
+<%= form_tag events_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a game"
+  %>
+<% end %>
 
 
 
