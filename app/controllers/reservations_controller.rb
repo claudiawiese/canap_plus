@@ -29,6 +29,26 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def edit
+    @reservation = Reservation.find params[:id]
+    @reservation.save
+  end
+
+  def update
+    @reservation = Reservation.find params[:id]
+    @event = Event.find(params[:event_id])
+    @reservation.event = @event
+    @reservation.update
+    redirect_to event_path(@event)
+  end
+
+  def delete
+    @reservation = Reservation.find params[:id]
+    @event = Event.find(params[:event_id])
+    @reservation.delete
+    redirect_to event_path(@event)
+  end
+
   private
 
   def reservation_params
