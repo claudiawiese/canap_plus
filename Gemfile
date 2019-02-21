@@ -34,8 +34,8 @@ end
 
 gem 'devise'
 
-gem 'simple_form'
-
 gem 'faker'
 
 gem "geocoder"
+
+gem 'pg_search'
