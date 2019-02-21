@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   mount_uploader :avatar, PhotoUploader
-  
+
   validates :nickname, uniqueness: true, presence: true
   validates :team, presence: true
 end
