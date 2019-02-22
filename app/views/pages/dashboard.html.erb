@@ -19,7 +19,7 @@
 <h1>My Events</h1>
 
 <ul>
-  <%@events.each do |event|%>
+  <%current_user.events.each do |event|%>
     <li>
       <%= link_to "#{event.game} - #{event.date} - #{event.description}", event_path(event)%>
     </li>

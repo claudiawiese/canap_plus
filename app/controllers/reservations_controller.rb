@@ -4,6 +4,7 @@ class ReservationsController < ApplicationController
     @event = Event.find(params[:event_id])
     @reservation = Reservation.new
     @reservation.event = @event
+    @reservation.user = current_user
     authorize @reservation
   end
 

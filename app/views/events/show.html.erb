@@ -21,8 +21,7 @@
     <p><%= @event.user.bio %></p>
     </div>
   </div>
-
-  <% if policy(Reservation).create? %>
+  <% if current_user != @event.user %>
     <%= link_to "Réserver", new_event_reservation_path(@event), :class => "btn btn-primary" %>
    <% end %>
      <% if policy(@event).update? %>
