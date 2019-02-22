@@ -10,5 +10,9 @@
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
 
-  <%= f.button :submit, "Add your event" %>
+  <div class="form-actions text-center">
+    <div class="form-actions">
+  <%= f.button :submit, "Add your event", class: "btn btn-primary" %>
+    </div>
+  </div>
 <% end %>
