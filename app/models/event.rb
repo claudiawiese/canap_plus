@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   validates :date, presence: true
   validates :capacity, presence: true
   validates :address, presence: true
-   validates :fee, presence: true
+  validates :fee, presence: true
   validates :photo, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
