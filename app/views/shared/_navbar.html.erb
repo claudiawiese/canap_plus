@@ -24,7 +24,7 @@
 
 
           <li><%= link_to "Mon profil", edit_user_registration_path  %></li>
-
+          <li><%= link_to "Mes évènements et réservations",  dashboard_path %></li>
           <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>
@@ -46,6 +46,7 @@
 <li><%= link_to "Connection", new_event_path %></li>
 
 <li><%= link_to "Inscription", events_path %></li>
+
 
       </ul>
     </div>
