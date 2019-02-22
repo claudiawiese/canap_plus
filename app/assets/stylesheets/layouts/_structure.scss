@@ -60,9 +60,10 @@ padding: 0 0 10px 0;
   }
 
 #map {
-
 height: calc(100vh - 70px);
+position: sticky;
 flex: 0 0 50%;
+top:0;
 }
 .box-games { padding: 20px;
   flex: 0 0 50%;
