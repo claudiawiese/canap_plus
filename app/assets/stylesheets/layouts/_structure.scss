@@ -60,9 +60,10 @@ padding: 0 0 10px 0;
   }
 
 #map {
-
 height: calc(100vh - 70px);
 flex: 0 0 50%;
+position: sticky !important; /* !important to override Gmaps inline CSS */
+  top: 0 !important;
 }
 .box-games { padding: 20px;
   flex: 0 0 50%;
