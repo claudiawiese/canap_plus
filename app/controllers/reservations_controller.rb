@@ -1,4 +1,7 @@
 class ReservationsController < ApplicationController
+
+
+
   def new
     # we need @event in our `simple_form_for`
     @event = Event.find(params[:event_id])

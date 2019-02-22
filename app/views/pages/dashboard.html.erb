@@ -1,0 +1,20 @@
+<h1>My Reservations</h1>
+
+<ul>
+  <%@reservations.each do |reservation|%>
+    <li>
+      <%= reservation.event.game %>
+    </li>
+    <%end%>
+</ul>
+
+<h1>My Events</h1>
+
+<ul>
+  <%@events.each do |event|%>
+    <li>
+      <%= event.game %>
+    </li>
+    <%end%>
+</ul>
+
