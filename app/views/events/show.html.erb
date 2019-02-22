@@ -2,17 +2,19 @@
   <div class="row">
     <div class="col-xs-12 col-sm-8">
       <h2><%=@event.game%> </h2>
-      <%= cl_image_tag(@event.photo,
-      width: 400, height: 300, crop: :fill) %>
       <p><%=@event.address%></p>
-      <p><%=@event.date%> </p>
+      <p>Le <%=@event.date%> </p>
+
+      <div style="margin:10px 0;"><%= cl_image_tag(@event.photo,
+      width: 700, height: 300, crop: :fill) %></div>
+
       <p><%=@event.description%> </p>
       <p>Il reste <%= @available_seats %> places dispos</p>
-      <p>Price: <%=@event.fee%> </p>
+      <p>Prix : <%=@event.fee%> </p>
     </div>
   <div class="col-xs-12 col-sm-4">
     <p style="margin: 10px 0;">Organisé par :</p>
-  <div class="box-panini" id="" style="background-image:url(<%= cl_image_path(@event.user.avatar, width: 400, height: 300, crop: :fill, gravity: :face) %>);">
+  <div class="box-panini" style="background-image:url(<% if @event.user.avatar? %><%= cl_image_path(@event.user.avatar, width: 400, height: 300, crop: :fill, gravity: :face) %>)<% end %>;">
 
     <span class="club"><%= @event.user.team %></span>
 
@@ -22,15 +24,16 @@
     </div>
   </div>
   <% if current_user != @event.user %>
-    <%= link_to "Réserver", new_event_reservation_path(@event), :class => "btn btn-primary" %>
+    <%= link_to "Réserver", new_event_reservation_path(@event), :class => "btn btn-default" %>
    <% end %>
      <% if policy(@event).update? %>
-    <%= link_to "Editer", edit_event_path(@event) %>
+    <%= link_to "Editer", edit_event_path(@event), :class => "btn btn-default" %>
     <% end %>
      <% if policy(@event).destroy? %>
-    <%= link_to "Annuler", event_path(@event),
+    <%= link_to "Supprimer", event_path(@event),
       method: :delete,
-      data: { confirm: "Vous êtes sûr?" } %>
+      data: { confirm: "Vous êtes sûr?" },
+      :class => "btn btn-danger" %>
       <% end %>
     </div>
   </div>
