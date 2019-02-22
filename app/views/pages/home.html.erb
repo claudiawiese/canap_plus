@@ -34,19 +34,5 @@
 
 <div class="games">
   <h2>Les prochains rendez-vous</h2>
-
-  <%@events.each do |event|%>
-
-  <div class="game-list">
-    <div class="game-avatar">
-    <%= cl_image_tag(event.user.avatar,
-    width: 75, height: 75, crop: :thumb, radius: :max, gravity: :face ) %>
-    </div>
-    <div class="game-info">
-      <h4><%= link_to "#{event.game}", event_path(event) %> </h4
-      <p><em> <%= event.date %> </em></p>
-      <p><%= event.description %></p>
-    </div>
-  </div>
-    <% end %>
+  <%= render 'shared/list_match', event: @event %>
   </div>
