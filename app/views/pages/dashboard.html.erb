@@ -3,9 +3,7 @@
 <ul>
   <%@reservations.each do |reservation|%>
     <li>
-      <%= link_to "#{reservation.event.game}", event_path(reservation.event) %>
-      <%=reservation.event.date%>
-      <%= reservation.event.description %>
+     <%= link_to "#{reservation.event.game}- #{reservation.event.date} - #{reservation.event.description}", event_path(reservation.event)%>
        <% if policy(reservation).destroy? %>
       <%= link_to "Delete", reservation_path(reservation),
       method: :delete,
@@ -16,14 +14,15 @@
 </ul>
 
 
+
+
 <h1>My Events</h1>
 
 <ul>
-  <%@events.each do |event|%>
+  <%current_user.events.each do |event|%>
     <li>
-        <%= link_to "#{event.game}", event_path(event) %>
-        <%= event.date %>
-        <%= event.description %>
+      <%= link_to "#{event.game} - #{event.date} - #{event.description}", event_path(event)%>
     </li>
     <%end%>
 </ul>
+

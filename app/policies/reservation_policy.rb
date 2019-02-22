@@ -3,13 +3,14 @@ class ReservationPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
     def create?
-      user != record.event.user
+      !(user == record.event.user)
     end
 
     def destroy?
-       record.user == user
+      record.user == user
     end
-  end
+
 end
