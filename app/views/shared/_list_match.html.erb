@@ -1,7 +1,14 @@
-<ul>
-  <%@events.each do |event|%>
-    <li>
-      <%= link_to "#{event.game} - #{event.date} - #{event.address}", event_path(event) %>
-    </li>
-  <% end %>
-</ul>
+<%@events.each do |event|%>
+
+  <div class="game-list">
+    <div class="game-avatar">
+    <%= cl_image_tag(event.photo,
+    width: 200, height: 100, crop: :thumb ) %>
+    </div>
+    <div class="game-info">
+      <h4><%= link_to "#{event.game}", event_path(event) %> </h4
+      <p><em> <%= event.date %> </em></p>
+      <p><%= event.description %></p>
+    </div>
+  </div>
+<% end %>
