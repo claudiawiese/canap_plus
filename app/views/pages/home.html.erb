@@ -40,7 +40,7 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="list-group">
           <%@events.each do |event|%>
-            <h4 class="list-group-item-text">   <%= link_to "#{event.game}", event %> </h4>
+            <h4 class="list-group-item-text">   <%= link_to "#{event.game}", event_path(event) %> </h4
             <p class="list-group-item-text"> <%= event.date %> </p>
             <%= event.description %>
           <% end %>
