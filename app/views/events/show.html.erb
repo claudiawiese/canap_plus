@@ -1,31 +1,34 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6">
-    <h2><%=@event.game%> </h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-xs-12 col-sm-8">
+      <h2><%=@event.game%> </h2>
       <%= cl_image_tag(@event.photo,
       width: 400, height: 300, crop: :fill) %>
+      <p><%=@event.address%></p>
+      <p><%=@event.date%> </p>
+      <p><%=@event.description%> </p>
+      <p>Il reste <%= @available_seats %> places dispos</p>
+      <p>Price: <%=@event.fee%> </p>
+    </div>
+  <div class="col-xs-12 col-sm-4">
+    <p style="margin: 10px 0;">Organisé par :</p>
+  <div class="box-panini" id="" style="background-image:url(<%= cl_image_path(@event.user.avatar, width: 400, height: 300, crop: :fill, gravity: :face) %>);">
+
+    <span class="club"><%= @event.user.team %></span>
+
+<div class="info">
+    <h2><%= @event.user.nickname %></h2>
+    <p><%= @event.user.bio %></p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-    <h2><%=@event.address%></h2>
-    <h2><%=@event.date%> </h2>
-    <h2><%=@event.description%> </h2>
-    <h2>Il reste <%= @available_seats %> places dispos</h2>
-    <h2>Price: <%=@event.fee%> </h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+
+
+    <%= link_to "Réserver", new_event_reservation_path(@event), :class => "btn btn-primary" %>
     <%= link_to "Réserver", new_event_reservation_path(@event) %>
     <%= link_to "Editer", edit_event_path(@event) %>
     <%= link_to "Annuller", event_path(@event),
       method: :delete,
       data: { confirm: "Vous êtes sûr?" } %>
-    </div>
+
   </div>
 </div>

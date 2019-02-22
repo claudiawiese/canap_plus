@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
+
+
+.box-panini {
+height:300px;
+background-size:cover;
+background-position:center;
+border:13px solid #FFF;
+text-align:center;
+position:relative;
+margin:10px 0 30px 0;
+}
+
+.box-panini .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFF;
+  border-top: 3px solid #3D9DDD;
+}
+
+.box-panini h2 {
+font-family: 'Staatliches', cursive;
+color: #3D9DDD;
+font-size:1.6em;
+margin: 0;
+padding:3px;
+}
+
+.box-panini p {
+  margin: 0;
+  color: #000;
+}
+
+span.club { text-transform:uppercase;
+font-size:1.1em;
+color:#3D9DDD;
+background:#FFF;
+padding:5px 30px;
+font-size:1.1em;
+}
