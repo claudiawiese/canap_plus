@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   def dashboard
     @reservations = current_user.reservations
     @events = current_user.events
+    @events = policy_scope(Event)
   end
 
 end

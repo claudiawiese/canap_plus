@@ -1,11 +1,10 @@
 class ReservationsController < ApplicationController
 
-
-
   def new
-    # we need @event in our `simple_form_for`
     @event = Event.find(params[:event_id])
     @reservation = Reservation.new
+    @reservation.event = @event
+    authorize @reservation
   end
 
   def create
@@ -14,7 +13,7 @@ class ReservationsController < ApplicationController
     @event = Event.find(params[:event_id])
     @reservation.event = @event
     @reservation.user = current_user
-
+    authorize @reservation
     available_seats = @event.capacity - @event.reservations.reduce(0) { |sum, res|
       sum + res.quantity
     }
@@ -34,6 +33,7 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation = Reservation.find params[:id]
+    authorize @reservation
     @reservation.delete
     redirect_to dashboard_path
   end
