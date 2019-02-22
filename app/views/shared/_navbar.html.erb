@@ -9,7 +9,7 @@
 
 <%= link_to "Accueillir un match", new_event_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
 
-<%= link_to "Les prochains matchs", events_index_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
+<%= link_to "Les prochains matchs", events_path, :class => "navbar-wagon-item navbar-wagon-link"  %>
 
 <% if user_signed_in? %>
 
@@ -45,7 +45,7 @@
 
 <li><%= link_to "Connection", new_event_path %></li>
 
-<li><%= link_to "Inscription", events_index_path %></li>
+<li><%= link_to "Inscription", events_path %></li>
 
       </ul>
     </div>

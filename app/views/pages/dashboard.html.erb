@@ -1,0 +1,28 @@
+<h1>My Reservations</h1>
+
+<ul>
+  <%@reservations.each do |reservation|%>
+    <li>
+      <%= reservation.event.game %>
+       <% if policy(reservation).destroy? %>
+      <%= link_to "Delete", reservation_path(reservation),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+      <% end %>
+    </li>
+    <%end%>
+</ul>
+
+
+
+
+<h1>My Events</h1>
+
+<ul>
+  <%@events.each do |event|%>
+    <li>
+      <%= event.game %>
+    </li>
+    <%end%>
+</ul>
+
