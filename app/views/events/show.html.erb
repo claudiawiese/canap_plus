@@ -25,10 +25,14 @@
 
     <%= link_to "Réserver", new_event_reservation_path(@event), :class => "btn btn-primary" %>
     <%= link_to "Réserver", new_event_reservation_path(@event) %>
+     <% if policy(@event).update? %>
     <%= link_to "Editer", edit_event_path(@event) %>
-    <%= link_to "Annuller", event_path(@event),
+    <% end %>
+     <% if policy(@event).destroy? %>
+    <%= link_to "Annuler", event_path(@event),
       method: :delete,
       data: { confirm: "Vous êtes sûr?" } %>
-
+      <% end %>
+    </div>
   </div>
 </div>
