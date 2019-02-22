@@ -42,19 +42,22 @@ class EventsController < ApplicationController
     end
   end
 
-  # def edit
-  #   @event = Event.find params[:id]
-  #   @event.save
-  # end
+  def edit
+    @event = Event.find params[:id]
+    @event.save
+  end
 
-  # def update
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to event_path(@event)
+  end
 
-  # end
 
   def destroy
     @event = Event.find params[:id]
     @event.destroy
-    redirect_to user_path(@event.user)
+    redirect_to root_path
   end
 
   private
