@@ -4,9 +4,15 @@
   <%@reservations.each do |reservation|%>
     <li>
       <%= reservation.event.game %>
+      <%= link_to "Delete", reservation_path(reservation),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
     </li>
     <%end%>
 </ul>
+
+
+
 
 <h1>My Events</h1>
 

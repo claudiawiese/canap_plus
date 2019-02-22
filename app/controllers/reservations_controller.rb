@@ -32,24 +32,10 @@ class ReservationsController < ApplicationController
     end
   end
 
-  def edit
+  def destroy
     @reservation = Reservation.find params[:id]
-    @reservation.save
-  end
-
-  def update
-    @reservation = Reservation.find params[:id]
-    @event = Event.find(params[:event_id])
-    @reservation.event = @event
-    @reservation.update
-    redirect_to event_path(@event)
-  end
-
-  def delete
-    @reservation = Reservation.find params[:id]
-    @event = Event.find(params[:event_id])
     @reservation.delete
-    redirect_to event_path(@event)
+    redirect_to dashboard_path
   end
 
   private
