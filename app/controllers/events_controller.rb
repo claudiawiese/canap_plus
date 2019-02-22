@@ -4,12 +4,12 @@ class EventsController < ApplicationController
   def index
     @events = policy_scope(Event)
     if params[:game].present?
-      @events = @events.search_by_game_or_adress(params[:game])
+      @events = @events.search_by_game(params[:game])
       if params[:address].present?
-        @events = @events.search_by_game_or_adress(params[:address])
+        @events = @events.near(params[:address],20)
       end
     elsif params[:address].present?
-      @events = @events.search_by_game_or_adress(params[:address])
+      @events = @events.near(params[:address],20)
     end
     @markers = @events.map do |event|
       {
@@ -39,7 +39,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path(@event)
     else
-      render 'event/show'
+      render :new
     end
   end
 
