@@ -1,55 +1,70 @@
 <div class="container">
-  <h2>My profile</h2>
-  <%= cl_image_tag(current_user.avatar,
-      width: 150, height: 150, crop: :thumb, radius: :max, gravity: :face) %>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= f.error_notification %>
+  <div class="row text-center">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h2>My profile</h2>
 
-    <div class="form-inputs">
-      <%= f.input :email, required: true, autofocus: true %>
+      <% if current_user.avatar?%>
+        <%= cl_image_tag(current_user.avatar,
+            width: 150, height: 150, crop: :thumb, radius: :max, gravity: :face) %>
+      <% else %>
+        <%= image_tag("avatar-placeholder.png", height: 100 ) %>
+      <% end %>
+    </div>
+  </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+
+          <%= f.input :password,
+                      hint: "leave it blank if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :current_password,
+                      hint: "we need your current password to confirm your changes",
+                      required: true,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :first_name,
+                      required: false %>
+          <%= f.input :last_name,
+                      required: false %>
+          <%= f.input :nickname,
+                      required: false %>
+          <%= f.input :birthday,
+                      required: false,
+                      html5: true %>
+          <%= f.input :phone,
+                      required: false %>
+          <%= f.input :avatar,
+                      required: false %>
+          <%= f.input :avatar_cache, as: :hidden %>
+          <%= f.input :bio,
+                      hint: "Please write about yourself, what do you do, what do you like etc.",
+                      required: false %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Update" %>
+        </div>
       <% end %>
 
-      <%= f.input :password,
-                  hint: "leave it blank if you don't want to change it",
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :current_password,
-                  hint: "we need your current password to confirm your changes",
-                  required: true,
-                  input_html: { autocomplete: "current-password" } %>
-       <%= f.input :first_name,
-                  required: false %>
-      <%= f.input :last_name,
-                  required: false %>
-      <%= f.input :nickname,
-                  required: false %>
-      <%= f.input :birthday,
-                  required: false %>
-      <%= f.input :phone,
-                  required: false %>
-      <%= f.input :avatar,
-                  required: false %>
-      <%= f.input :avatar_cache, as: :hidden %>
-      <%= f.input :bio,
-                  hint: "Please write about yourself, what do you do, what do you like etc.",
-                  required: false %>
+      <h3>Cancel my account</h3>
+
+      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+      <%= link_to "Back", :back %>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Update" %>
-    </div>
-  <% end %>
-
-  <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
+  </div>
 </div>
