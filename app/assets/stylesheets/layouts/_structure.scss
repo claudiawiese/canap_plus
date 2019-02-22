@@ -14,7 +14,7 @@
   margin:30px;
 }
 
-  .box-home h1, .box-home h2 { color: #FFF; }
+.box-home h1, .box-home h2 { color: #FFF; }
 
 .search { display: flex;
 align-items: center;
@@ -44,10 +44,26 @@ display: flex;
 width: 100%;
 margin: 0 0 20px 0;
 border-bottom:1px solid $light-gray;
+padding: 0 0 10px 0;
   }
 
-  .games-list h4 { margin: 0; }
+  .games-info h4 { margin: 0; }
 
-  .game-info {
+  .box-map {
+    display: flex;
+ }
 
+@media only screen and (max-width: 600px) {
+.box-map {
+    display:block;
+  }
+  }
+
+#map {
+
+height: calc(100vh - 70px);
+flex: 0 0 50%;
+}
+.box-games { padding: 20px;
+  flex: 0 0 50%;
   }
