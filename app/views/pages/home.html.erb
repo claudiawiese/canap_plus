@@ -1,50 +1,52 @@
-
-
-<div class="container">
-
+<div class="box-home">
   <div class="row">
-    <div class="col-xs-12 text-center">
-      <h2>Trouvez un <i class="fas fa-couch"></i> près de votre <i class="fas fa-home"></i></h2>
-      <h3>Les matchs de votre équipe préférée entre amis</h3>
-
-    </div>
-  </div>
-
-  <!-- <form action="/events" method="get">
-    <input type="text" name="game">
-    <input type="submit">
-  </form> -->
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <%= form_tag events_path, method: :get, class: "form-inline text-center" do %>
+    <div class="col-xs-12 col-sm-6">
+      <div class="search">
+        <p><strong>Cherchez un canapé prêt de chez vous</strong></p>
+        <%= form_tag events_path, method: :get do %>
         <div class="form-group">
           <%= text_field_tag :game,
-            params[:game],
-            class: "form-control",
-            placeholder: "Votre équipe"
+          params[:game],
+          class: "form-control",
+          placeholder: "Votre équipe"
           %>
         </div>
         <div class="form-group">
           <%= text_field_tag :address,
-            params[:address],
-            class: "form-control",
-            placeholder: "Votre ville"
+          params[:address],
+          class: "form-control",
+          placeholder: "Votre ville"
           %>
         </div>
         <%= submit_tag "Go", class: "form-control" %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <div class="list-group">
-          <%@events.each do |event|%>
-            <h4 class="list-group-item-text">   <%= link_to "#{event.game}", event_path(event) %> </h4
-            <p class="list-group-item-text"> <%= event.date %> </p>
-            <%= event.description %>
-          <% end %>
+    <div class="col-xs-12 col-sm-6">
+      <!--     <h2>Trouvez un <i class="fas fa-couch"></i> près de votre <i class="fas fa-home"></i></h2>
+      -->
+      <div class="description">
+      <h1>Les matchs de votre équipe préférée entre amis</h1>
       </div>
     </div>
   </div>
 </div>
+
+<div class="games">
+  <h2>Les prochains rendez-vous</h2>
+
+  <%@events.each do |event|%>
+
+  <div class="game-list">
+    <div class="game-avatar">
+    <%= cl_image_tag(event.user.avatar,
+    width: 75, height: 75, crop: :thumb, radius: :max, gravity: :face ) %>
+    </div>
+    <div class="game-info">
+      <h4><%= link_to "#{event.game}", event_path(event) %> </h4
+      <p><em> <%= event.date %> </em></p>
+      <p><%= event.description %></p>
+    </div>
+  </div>
+    <% end %>
+  </div>
