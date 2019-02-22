@@ -1,3 +1,53 @@
-.box { }
+.box {  }
 
 .box-cancel { background-color:$light-gray; padding:10px; }
+
+
+.box-home { height:93vh; background-image:url(http://themacguffinmen.com/wp-content/uploads/2012/11/The-League-couch.jpg);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.description {
+  padding:30px;
+  margin:30px;
+}
+
+  .box-home h1, .box-home h2 { color: #FFF; }
+
+.search { display: flex;
+align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(0,0,0,0.7);
+  padding: 30px;
+  margin: 30px; }
+
+  .search p {
+    margin:0 0 20px 0;
+    padding: 0;
+    color: #FFF;
+  }
+
+.games {
+margin: 20px;
+
+}
+
+.game-avatar {
+  margin:0 20px 0 0;
+}
+
+  .game-list {
+display: flex;
+width: 100%;
+margin: 0 0 20px 0;
+border-bottom:1px solid $light-gray;
+  }
+
+  .games-list h4 { margin: 0; }
+
+  .game-info {
+
+  }
