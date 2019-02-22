@@ -2,15 +2,14 @@ class EventsController < ApplicationController
    skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @events = Event.where.not(latitude: nil, longitude: nil)
-
+    @events = policy_scope(Event)
     if params[:game].present?
-      @events = @events.search_by_game_or_adress(params[:game])
+      @events = @events.search_by_game(params[:game])
       if params[:address].present?
-        @events = @events.search_by_game_or_adress(params[:address])
+        @events = @events.near(params[:address],20)
       end
     elsif params[:address].present?
-      @events = @events.search_by_game_or_adress(params[:address])
+      @events = @events.near(params[:address],20)
     end
     @markers = @events.map do |event|
       {
@@ -22,7 +21,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-
+    authorize @event
     @available_seats = @event.capacity - @event.reservations.reduce(0) { |sum, res|
       sum + res.quantity
     }
@@ -30,25 +29,29 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    authorize @event
   end
 
   def create
     @event = Event.new(event_params)
     @event.user = current_user
+    authorize @event
     if @event.save
       redirect_to event_path(@event)
     else
-      render 'event/show'
+      render :new
     end
   end
 
   def edit
     @event = Event.find params[:id]
+    authorize @event
     @event.save
   end
 
   def update
     @event = Event.find(params[:id])
+    authorize @event
     @event.update(event_params)
     redirect_to event_path(@event)
   end
@@ -56,6 +59,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find params[:id]
+    authorize @event
     @event.destroy
     redirect_to root_path
   end
