@@ -1,0 +1,8 @@
+<h1>Editer vos places réservées: <%= @reservation.quantity %> places </h1>
+<%= simple_form_for(@reservation) do |f| %>
+
+  <%= f.input :quantity, collection: 1..@reservation.event.capacity %>
+
+  <%= f.button :submit, "Éditer" %>
+<% end %>
+

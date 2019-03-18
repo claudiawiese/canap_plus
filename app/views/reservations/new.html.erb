@@ -1,3 +1,8 @@
 <h1>Réserver un événement</h1>
+<%= simple_form_for([@event, @reservation]) do |f| %>
 
-<%= render 'form', reservation: @reservation %>
+  <%= f.input :quantity, collection: 1..@event.capacity%>
+
+  <%= f.button :submit, "Réserver" %>
+<% end %>
+

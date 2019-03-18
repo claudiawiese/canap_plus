@@ -21,6 +21,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @reservation = Reservation.find_by(event_id: @event.id, user_id: current_user.id)
     authorize @event
     @available_seats = @event.capacity - @event.reservations.reduce(0) { |sum, res|
       sum + res.quantity
