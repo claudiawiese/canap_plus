@@ -9,6 +9,10 @@ class ReservationPolicy < ApplicationPolicy
       !(user == record.event.user)
     end
 
+    def update?
+      !(user == record.event.user)
+    end
+
     def destroy?
       record.user == user
     end

@@ -12,6 +12,9 @@
       method: :delete,
       data: { confirm: "Are you sure?" } %>
       <% end %>
+        <% if policy(reservation).update? %>
+       <%= link_to "[Éditer]", edit_reservation_path(reservation)%>
+      <% end %>
     </li>
     <%end%>
 </ul>

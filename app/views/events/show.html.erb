@@ -23,13 +23,16 @@
     <p><%= @event.user.bio %></p>
     </div>
   </div>
-  <% if current_user != @event.user %>
+  <% if current_user != @event.user && @reservation == nil %>
     <%= link_to "Réserver", new_event_reservation_path(@event), :class => "btn btn-default" %>
    <% end %>
-     <% if policy(@event).update? %>
+  <% if current_user != @event.user && @reservation != nil%>
+  <%= link_to "Voir mes évènements et réservations", dashboard_path %>
+  <% end %>
+  <% if policy(@event).update? %>
     <%= link_to "Editer", edit_event_path(@event), :class => "btn btn-default" %>
-    <% end %>
-     <% if policy(@event).destroy? %>
+  <% end %>
+  <% if policy(@event).destroy? %>
     <%= link_to "Supprimer", event_path(@event),
       method: :delete,
       data: { confirm: "Vous êtes sûr?" },

@@ -15,22 +15,41 @@ class ReservationsController < ApplicationController
     @reservation.event = @event
     @reservation.user = current_user
     authorize @reservation
-    available_seats = @event.capacity - @event.reservations.reduce(0) { |sum, res|
+    @available_seats = @event.capacity - @event.reservations.reduce(0) { |sum, res|
       sum + res.quantity
     }
-    if @reservation.quantity <= available_seats
-      if @reservation.save
-        flash[:alert] = nil
-        flash[:notice] = "Merci de votre réservation"
-        redirect_to event_path(@event)
-      else
-        render :new
-      end
+    if @reservation.save
+      flash[:alert] = nil
+      flash[:notice] = "Merci de votre réservation"
+      redirect_to event_path(@event)
     else
-      flash[:alert] = "Il ne reste que #{available_seats} places disponibles"
       render :new
     end
   end
+
+  def edit
+    @reservation = Reservation.find(params[:id])
+    @reservation.user = current_user
+    authorize @reservation
+  end
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    @event = @reservation.event
+    @reservation.user = current_user
+    authorize @reservation
+    @quantity = reservation_params[:quantity]
+    @available_seats = @event.capacity - @event.reservations.reduce(0) { |sum|
+        sum + @quantity.to_i }
+    if @reservation.update(reservation_params)
+    flash[:alert] = nil
+    flash[:notice] = "Votre réservation a été éditée"
+    redirect_to event_path(@event)
+    else
+      render :edit
+    end
+  end
+
 
   def destroy
     @reservation = Reservation.find params[:id]
