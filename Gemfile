@@ -29,8 +29,16 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem 'rspec-rails', '~> 3.4'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
+  gem 'factory_bot_rails', '~> 5.0'
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'database_cleaner', '~> 1.5'
+  gem 'capybara', '~> 2.5'
+end
 
 gem 'devise'
 

@@ -7,7 +7,6 @@ class Event < ApplicationRecord
   validates :capacity, presence: true
   validates :address, presence: true
   validates :fee, presence: true
-  validates :photo, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   mount_uploader :photo, PhotoUploader
@@ -18,4 +17,4 @@ class Event < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
-end
+  end
