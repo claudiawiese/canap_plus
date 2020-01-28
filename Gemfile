@@ -36,7 +36,7 @@ gem 'devise'
 
 gem 'faker'
 
-gem "geocoder"
+gem "geocoder", ">= 1.6.1"
 
 gem 'pg_search'
 
